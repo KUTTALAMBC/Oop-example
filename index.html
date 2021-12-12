@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+//           <div id="container" style="display: flex;
+//     flex-wrap: wrap;
+//     flex-direction: row;">
+// </div>
+
+
+
+class Board {
+            currentPlayer = "X";
+            constructor() {
+                let board = document.createElement("div")
+                board.style.width = "350px"
+                // board.style.height = "350px"
+                board.style.display = "flex";
+                board.style.flexDirection = "row";
+                board.style.flexWrap = "wrap"
+                board.style.marginBottom = "25px"
+                document.getElementById("container").appendChild(board);
+                for (let index = 0; index < 9; index++) {
+                    new Box(board, this)
+                }
+            }
+
+            changeCurrentPlayer() {
+                if (this.currentPlayer == "X") {
+                    this.currentPlayer = "0"
+                } else {
+                    this.currentPlayer = "X"
+                }
+            }
+        }
+        class Box {
+            board;
+            box;
+            constructor(boardElement, board) {
+                this.board = board;
+                this.box = document.createElement("div");
+                this.box.style.height = "100px";
+                this.box.style.width = "100px";
+                this.box.style.backgroundColor = "wheat";
+                this.box.style.border = "1px solid grey";
+                this.box.onclick = this.addValue()
+                console.log(this.board)
+                boardElement.appendChild(this.box)
+            }
+
+            addValue() {
+                return () => {
+                    console.log(this)
+                    this.box.innerText = this.board.currentPlayer;
+                    this.board.changeCurrentPlayer()
+                }
+            }
+        }
+
+
+        new Board()
+        new Board()
+        new Board()
+        new Board()
+        new Board()
+        new Board()
+        new Board()
+        new Board()
+        new Board()
+        new Board()
+        new Board()
+    </script>
+  
+      
+   
+
+
+</body>
+
+</html>
